@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useConvexAuth, useMutation, useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { createTemplateStore } from "@/components/templates/_shared/hooks/create-template-store";
 import { pagesReducer } from "@/components/templates/_shared/pages/reducer";
@@ -117,7 +117,12 @@ function LandingAdapter({ children }: { children: React.ReactNode }) {
  *  zero-backend playground. */
 function ConvexSync() {
   const { state, dispatch } = useStore();
-  const { isAuthenticated } = useConvexAuth();
+  // NOT useConvexAuth(): (public) renders inside its own Suspense boundary,
+  // which can hydrate before ConvexAuthProvider's client-only mount — the
+  // hook would throw "Could not find ConvexProviderWithAuth". A plain query
+  // against the auth-exported `isAuthenticated` works under the bare
+  // ConvexProvider and flips reactively once the owner's token lands.
+  const isAuthenticated = useQuery(api.auth.isAuthenticated) ?? false;
   const doc = useQuery(
     api.features.notion.query.get,
     isAuthenticated ? { slug: "workspace" } : "skip",
