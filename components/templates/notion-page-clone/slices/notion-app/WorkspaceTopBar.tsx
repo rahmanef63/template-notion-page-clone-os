@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ThemePresetSwitcher } from "@/features/theme-presets";
 import Link from "next/link";
 import {
   ChevronRight,
@@ -100,6 +101,7 @@ export function WorkspaceTopBar({
             />
           </Button>
         )}
+        <ThemePresetSwitcher />
         {extras}
         <Button variant="ghost" size="icon" aria-label="More" className="h-7 w-7">
           <MoreHorizontal className="h-3.5 w-3.5" />
