@@ -1,6 +1,7 @@
-// The site-settings contract — the shape the onboarding/admin Settings UI writes
-// and the public surfaces read. Mirrors the Convex `siteSettings` singleton (all
-// optional; one row). Centralised so every surface shares one definition.
+// The site-settings contract — the shape the onboarding wizard writes, the admin
+// Settings form edits, and the public chrome reads. Mirrors the Convex
+// `siteSettings` singleton (all optional; one row). Centralised here so every
+// surface (and any template adopting the core) shares one definition.
 export type SiteSettings = {
   siteName?: string;
   tagline?: string;

@@ -1,15 +1,16 @@
 import { action } from "./_generated/server";
 import { getAuthUserId } from "@convex-dev/auth/server";
 
-// In-app update channel (headless-core). A clone can't "git pull" itself, but it
-// CAN tell the owner when the upstream template shipped a newer version and (if
-// they wired a Vercel deploy hook) rebuild on demand. Version comparison happens
-// client-side (the app imports CORE_VERSION); these actions only do what the
-// browser can't: fetch the upstream manifest, and POST the deploy hook.
+// In-app update channel.
+//
+// A clone can't "git pull" itself, but it CAN tell the owner when the upstream
+// template has shipped a newer version, and (if they wired a Vercel deploy hook)
+// rebuild on demand. Version comparison happens client-side (the running app
+// imports CORE_VERSION); these actions only do the two things the browser can't:
+// fetch the upstream manifest, and POST the deploy hook.
 
 // Upstream manifest on the template's default branch. Hardcoded (not client-
-// supplied) so this can't be pointed at an arbitrary URL. EDIT the slug to your
-// own repo if you fork away from the template.
+// supplied) so this can't be pointed at an arbitrary URL.
 const UPSTREAM_VERSION_URL =
   "https://raw.githubusercontent.com/rahmanef63/template-notion-page-clone-os/main/version.json";
 

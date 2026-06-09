@@ -11,7 +11,7 @@ import {
   Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "rahman-shared/lib/utils";
+import { cn } from "@/lib/utils";
 
 export type Crumb = { label: string; href?: string; icon?: string };
 

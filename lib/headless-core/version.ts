@@ -1,22 +1,22 @@
-// Single source of version truth for this app + its headless core.
+// Single source of version truth for the template + its headless core.
 //
 // `version.json` (repo root) is the machine-readable manifest the in-app update
-// channel reads on BOTH sides: the running app imports CORE_VERSION here, and
+// channel reads on BOTH sides: the running clone imports CORE_VERSION here, and
 // the upstream check fetches the raw version.json from GitHub to compare.
 //
-// Bump rule: edit version.json (this file imports it — one number to change).
+// Bump rule: edit version.json, keep this import in sync (it imports the JSON so
+// there's only one number to change).
 import manifest from "@/version.json";
 
 export const CORE_VERSION: string = manifest.core;
 export const TEMPLATE_VERSION: string = manifest.version;
 export const RELEASE_CHANNEL: string = manifest.channel;
 
-// Upstream repo this clone updates from. Defaults to the template repo the CLI
-// scaffolded from; EDIT these to YOUR repo so "check for updates" points at the
-// source you actually pull from (or leave as-is if you track the template).
+// Upstream template repo — the canonical source a clone updates from.
 export const UPSTREAM_OWNER = "rahmanef63";
 export const UPSTREAM_REPO = "template-notion-page-clone-os";
 export const UPSTREAM_REPO_URL = `https://github.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}`;
+// Raw manifest on the default branch — what `checkUpdate` fetches to learn the latest version.
 export const UPSTREAM_VERSION_URL = `https://raw.githubusercontent.com/${UPSTREAM_OWNER}/${UPSTREAM_REPO}/main/version.json`;
 
 /** semver-ish compare: returns >0 if a>b, <0 if a<b, 0 if equal. Tolerates "1.2.3". */
