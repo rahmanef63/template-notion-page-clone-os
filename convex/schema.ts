@@ -2,9 +2,12 @@ import { authTables } from "@convex-dev/auth/server";
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 import { notionTables } from "./features/notion/_schema";
+import { commentsTables } from "./features/comments/_schema";
 
 export default defineSchema({
   ...authTables,
+  // Threaded comments on public docs (fleet-standard comments slice).
+  ...commentsTables,
   // Whole-document workspace persistence (signed-in owner mode). The demo and
   // anonymous visitors run on localStorage; once the owner signs in, the
   // workspace state hydrates from + debounce-saves to `notion_docs`.

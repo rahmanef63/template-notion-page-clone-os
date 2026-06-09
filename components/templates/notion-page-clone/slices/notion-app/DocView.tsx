@@ -13,6 +13,7 @@ import { DynamicIcon, IconPickerPopover } from "@/features/icon-picker";
 import type { ImageValue, ImageField } from "@/features/image-picker";
 import { Button } from "@/components/ui/button";
 import { useDocs, useStore } from "../../shared/store";
+import { CommentsSection } from "../../shared/comments-section";
 import { NOTION_BLOCK_RENDERERS, TocHeadingsContext } from "./block-renderers";
 import { CoverArea, AddCoverPicker } from "./DocCover";
 
@@ -184,6 +185,7 @@ export function DocView({ docId }: { docId: string }) {
       <InlineFormatToolbar />
       <MentionTypeahead mentionables={mentionables} />
       <AddCoverPicker open={coverPickerOpen} onOpenChange={setCoverPickerOpen} onPick={setCover} />
+      <CommentsSection kind="doc" slug={docId} title="Komentar" />
     </NotionPage>
     </TocHeadingsContext.Provider>
   );

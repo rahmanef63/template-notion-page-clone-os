@@ -11,6 +11,10 @@
 import type * as auth from "../auth.js";
 import type * as backup from "../backup.js";
 import type * as features_aiChat_action from "../features/aiChat/action.js";
+import type * as features_comments__schema from "../features/comments/_schema.js";
+import type * as features_comments_mutation from "../features/comments/mutation.js";
+import type * as features_comments_public from "../features/comments/public.js";
+import type * as features_comments_query from "../features/comments/query.js";
 import type * as features_notion__schema from "../features/notion/_schema.js";
 import type * as features_notion_mutation from "../features/notion/mutation.js";
 import type * as features_notion_query from "../features/notion/query.js";
@@ -31,6 +35,10 @@ declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   backup: typeof backup;
   "features/aiChat/action": typeof features_aiChat_action;
+  "features/comments/_schema": typeof features_comments__schema;
+  "features/comments/mutation": typeof features_comments_mutation;
+  "features/comments/public": typeof features_comments_public;
+  "features/comments/query": typeof features_comments_query;
   "features/notion/_schema": typeof features_notion__schema;
   "features/notion/mutation": typeof features_notion_mutation;
   "features/notion/query": typeof features_notion_query;
