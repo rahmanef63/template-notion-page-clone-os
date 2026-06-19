@@ -18,6 +18,7 @@ import type * as features_comments_query from "../features/comments/query.js";
 import type * as features_notion__schema from "../features/notion/_schema.js";
 import type * as features_notion_mutation from "../features/notion/mutation.js";
 import type * as features_notion_query from "../features/notion/query.js";
+import type * as files from "../files.js";
 import type * as http from "../http.js";
 import type * as seed from "../seed.js";
 import type * as settings from "../settings.js";
@@ -42,6 +43,7 @@ declare const fullApi: ApiFromModules<{
   "features/notion/_schema": typeof features_notion__schema;
   "features/notion/mutation": typeof features_notion_mutation;
   "features/notion/query": typeof features_notion_query;
+  files: typeof files;
   http: typeof http;
   seed: typeof seed;
   settings: typeof settings;
